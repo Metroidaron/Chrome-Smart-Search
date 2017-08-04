@@ -19,10 +19,45 @@
   <body>
 
     <div class="jumbotron">
-      <h1>Hello, world!</h1>
+      <h1 id="text"></h1>
       <p>...</p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+      <p>This is all sample data to show what the landing/Middle-Man page would be for this tool.  This page should be styled to be very pleasent for the user, and offer a customizable "Home-Page" experiance, that is also <kbd>Hackable</kbd>.
+      <p><a class="btn btn-primary btn-lg" href="https://github.com/Metroidaron/Chrome-Smart-Search" role="button">Learn more at the Repository</a></p>
     </div>
+
+    <script>
+    //Simple Yet Terrible Implimentation for example purposes
+      var d = new Date();
+      var timeFrame = "";
+      switch(d.getHours()){
+        case 0 : timeFrame = "Good Morning"; break;
+        case 1 : timeFrame = "Good Morning"; break;
+        case 2 : timeFrame = "Good Morning"; break;
+        case 4 : timeFrame = "Good Morning"; break;
+        case 3 : timeFrame = "Good Morning"; break;
+        case 5 : timeFrame = "Good Morning"; break;
+        case 6 : timeFrame = "Good Morning"; break;
+        case 7 : timeFrame = "Good Morning"; break;
+        case 8 : timeFrame = "Good Morning"; break;
+        case 9 : timeFrame = "Good Morning"; break;
+        case 10 : timeFrame = "Good Morning"; break;
+        case 11 : timeFrame = "Good Morning"; break;
+        case 12 : timeFrame = "Good Afternoon"; break;
+        case 13 : timeFrame = "Good Afternoon"; break;
+        case 14 : timeFrame = "Good Afternoon"; break;
+        case 15 : timeFrame = "Good Afternoon"; break;
+        case 16 : timeFrame = "Good Afternoon"; break;
+        case 17 : timeFrame = "Good Afternoon"; break;
+        case 18 : timeFrame = "Good Evening"; break;
+        case 19 : timeFrame = "Good Evening"; break;
+        case 20 : timeFrame = "Good Evening"; break;
+        case 21 : timeFrame = "Good Evening"; break;
+        case 22 : timeFrame = "Good Evening"; break;
+        case 23 : timeFrame = "Good Evening"; break;
+      }
+      document.getElementById("text").innerHTML = timeFrame + ", User!"
+
+    </script>
 
   </body>
 </html>
