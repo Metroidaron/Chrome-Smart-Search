@@ -6,7 +6,16 @@ Chrome Smart Search is meant to introduce logic into the Google Chrome Omni Bar 
 
 ### How to download/use
 
-At this time the tool has not been created.  This section will be updated as it becomes viable and tools selected for use are solidified.  At the time of writing this tool will likely utilize NPM for common packages (Such as Bootstrap, possibly SASS, etc.) as well as a server interface for quick installation and setup.
+Required Programs
+- Git (If your looking to clone this repository, you may also download a copy using the download button in the top right)
+- Node.js (Used to run the local server and download a local copy of Bootstrap, to avoid relying on a CDN)
+
+Steps
+1. Acquire package locally through cloning or download (Unzip if downloaded)
+2. Open a command line instance inside the directory
+3. Execute the command `npm install`
+4. Execute the command `node start`
+5. Navigate to localhost:8080
 
 ### Mission
 
