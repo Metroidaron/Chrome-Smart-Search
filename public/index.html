@@ -21,33 +21,25 @@
       <div id="gridBase" class="container-fluid">
 
         <div id="" class="topRow row">
-          <div id="" class="leftCol col-md-6">
+          <div id="topLeftQuadrant" class="leftCol col-md-6">
             <button type="button" class="btn btn-default" aria-label="Left Align">
               <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
             </button>
             Top Left
           </div>
-          <div id="" class="rightCol col-md-6">
+
+          <div id="topRightQuadrant" class="rightCol col-md-6">
             Top Right
           </div>
         </div>
 
-        <div id="" class="middleRow row">
-          <div id="" class="leftCol col-md-12 ">
-            Middle Full
-            <p class="text-muted">
-              Layer 1, a full screen absolute layer that should contain all buttons inside a Layout (this will have a basic, four quadrant layout for now, utilizing a Flex Layout).
-            </p>
-          </div>
-        </div>
-
-        <div id="" class="bottomRow row">
-          <div id="" class="leftCol col-md-6">
-            Layer 1, a full screen absolute layer that should contain all buttons inside a Layout (this will have a basic, four quadrant layout for now, utilizing a Flex Layout).
+        <div id="" class="row">
+          <div id="bottomLeftQuadrant" class="leftCol col-md-6">
             <p>
               <a href="settings.html"><span class="glyphicon glyphicon-cog"></span> Settings</a>
           </div>
-          <div id="" class="rightCol col-md-6">
+
+          <div id="bottomRightQuadrant" class="rightCol col-md-6">
             Bottom Right
           </div>
         </div>
@@ -55,16 +47,17 @@
       </div>
     </div>
 
-
-      <p>
-      </p>
-    </div>
-
+    <div id="layer2" class="">
     <div class="jumbotron">
       <h1 id="text"></h1>
-      <p>...</p>
+      <p>
+        <form action="">
+          <input id="query" name="query" type="text" placeholder="Ask Something..." />
+        </form>
+      </p>
       <p>This is all sample data to show what the landing/Middle-Man page would be for this tool.  This page should be styled to be very pleasant for the user, and offer a customizable "Home-Page" experiance, that is also <kbd>Hackable</kbd>.
       <p><a class="btn btn-primary btn-lg" href="https://github.com/Metroidaron/Chrome-Smart-Search" role="button">Learn more at the Repository</a></p>
+      </div>
     </div>
 
     <script>
@@ -97,7 +90,7 @@
         case 22 : timeFrame = "Good Evening"; break;
         case 23 : timeFrame = "Good Evening"; break;
       }
-      document.getElementById("text").innerHTML = timeFrame + ", User!"
+      document.getElementById("text").innerHTML = timeFrame + ", John Snow!"
 
     </script>
 
