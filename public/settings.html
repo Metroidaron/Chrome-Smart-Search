@@ -19,12 +19,45 @@
   <body>
 
     <div id="settings_container" class="row container">
-        <div class="col-sm-3 rounded">
-            The two Col
+        <div id="left" class="col-sm-3 rounded">
+            <h2>Personal</h2>
+            <hr />
+            <h2>Personalization</h2>
+            <hr />
+            <h2>Search Rules</h2>
+            <hr />
+            <h2>Cloud Sync</h2>
+            <hr />
+            <h2>JSON Text</h2>
         </div>
 
-        <div class="col-sm-8 rounded">
-            The 10 Col
+        <div id="right" class="col-sm-8 rounded">
+
+            <div id="instructions">
+              Information in this form will be updated as you change the values, no save button is needed.  In order to backup or import your settings, please use the "JSON Text" Button to the left, you may update this text and select "Save" to edit your changes as well.
+            </div>
+
+            <br />
+
+            <form class="row container">
+              <fieldset>
+                <legend>User Information</legend>
+                <label for="fname">First Name : </label><input name="fname" type="text" placeholder="John" />
+                <label for="lname">Last Name : </label><input name="lname" type="text" placeholder="Snow" />
+                <br />
+                <label>Email : </label><input type="email" placeholder="John.Snow@example.com" />
+                <br/>
+                <label for="zip">Zip Code : </label><input name="zip" type="text" placeholder="12345" />
+
+              </fieldset>
+
+              <fieldset>
+                <legend>User Interface Personalization</legend>
+                <label for="fname">Text Color : </label><input style="min-width:75px;" name="fontColor" type="color" />
+                <label for="fname">Background Color : </label><input style="min-width:75px;" name="backgroundColor" type="color" />
+              </fieldset>
+
+            </form>
         </div>
     </div>
 
