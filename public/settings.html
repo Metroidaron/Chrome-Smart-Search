@@ -12,6 +12,9 @@
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Font Awesome Core CSS -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
     <!-- Custom styles for this application -->
     <link href="style.css" rel="stylesheet">
   </head>
@@ -55,6 +58,77 @@
                 <legend>User Interface Personalization</legend>
                 <label for="fname">Text Color : </label><input style="min-width:75px;" name="fontColor" type="color" />
                 <label for="fname">Background Color : </label><input style="min-width:75px;" name="backgroundColor" type="color" />
+              </fieldset>
+
+              <fieldset>
+                <legend>Rules</legend>
+              </fieldset>
+
+              <fieldset>
+                <legend>Cloud Storage</legend>
+                <i class="fa fa-cloud"></i>
+                <i class="fa fa-cloud-download"></i>
+                <i class="fa fa-camera-retro fa-5x"></i>
+              </fieldset>
+
+              </fieldset>
+                <legend>JSON Text Output (Do Not Modify unless your know what you are doing.)</legend>
+                <textarea cols="100%" rows="100%">
+SAMPLE DATA HERE
+This text is meant to help map out what settings need to be represented.
+When loading this settings page, this text area should be hidden and require the user to click a button or perform a verification task to prevent un-intended editing.
+
+START JSON:
+
+{
+  "userSettings" : {
+    "firstName" : "John",
+    "lastName" : "Snow",
+    "email" : "testing@Testing.com",
+    "zip" : 12345
+  },
+  "userInterfacePersonalization" : {
+    "hideJSON" : 0,
+    "theme" : "Dark",
+    "wallpaperTint" : "0"
+  }
+  "rules" : [
+    {
+      "type" : "match",
+      "name" : "",
+
+    },
+    {
+      "type" : "key",
+      "name" : "",
+
+    },
+    {
+      "type" : "redirect",
+      "name" : "",
+
+    },
+    {
+      "type" : "GET",
+      "name" : "",
+
+    },
+    {
+      "type" : "POST",
+      "name" : "",
+
+    },
+    {
+      "type" : "Script",
+      "name" : "",
+
+    }
+  ]
+
+
+}
+
+                </textarea>
               </fieldset>
 
             </form>
