@@ -167,7 +167,7 @@ legend{
   padding-top: 100px;
 }
 
-input, textarea {
+input, textarea, select, option{
     font-size: 1.25em;
     font-family: cursive, courier;
     width: auto;

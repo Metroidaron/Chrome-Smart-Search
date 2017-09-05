@@ -56,19 +56,58 @@
 
               <fieldset>
                 <legend>User Interface Personalization</legend>
-                <label for="fname">Text Color : </label><input style="min-width:75px;" name="fontColor" type="color" />
-                <label for="fname">Background Color : </label><input style="min-width:75px;" name="backgroundColor" type="color" />
+                <label for="fontColor">Text Color : </label><input style="min-width:75px;" name="fontColor" type="color" />
+                <label for="backgroundColor">Background Color : </label><input style="min-width:75px;" name="backgroundColor" type="color" />
               </fieldset>
 
               <fieldset>
                 <legend>Rules</legend>
+                <div>
+                  This form of editing the rules has not been implimented yet, Editing these rules will not modify the functions of the web page.  One of each of these rules has been impimented to establish what fields need to utilized and as a scaffold for designing the javascript behind each item.  These rules should be added and removed dynamically.
+                </div>
+
+                <div id="ruleDescriptions">
+                  <ul>
+                    <li>Match :  Matches user input to a rule, defined by a Regular Expression.  User can opt to use a 'Key' to force recognition of this rule, otherwise this rule will follow standard recognition rules.</li>
+                    <li>Redirect : Redirects the user to the given url, much like a book mark.  This rule is not meant to pass any data to the target website.</li>
+                    <li>GET : allows the user to pass a selection of values to the target website (all values predetermined except what the user types to triger this rule, if the user would like to pass multiple values the user needs to utilize the 'Script' rule)</li>
+                    <li>POST : Same as the GET Rule, but using POST Values.  (More Technical and requires a stronger understanding of the target website)</li>
+                    <li>Script : Allows a user to write a custom script to execute when this rule is triggered</li>
+                    <li></li>
+                  </ul>
+                </div>
+
+                <div>
+                    <label>Rule Name</label><input type="text" placeholder="Standard Google Search" />
+                    <label>Rule Type</label>
+                      <select>
+                        <option selected>Match</option>
+                        <option>Key</option>
+                        <option>Redirect</option>
+                        <option>GET</option>
+                        <option>POST</option>
+                        <option>Script</option>
+                      </select>
+                      <br />
+                    <label>Open Target : </label>
+                      <select>
+                        <option>In This Tab</option>
+                        <option>In A New Tab</option>
+                        <option>In A New Window</option>
+                      </select>
+                    <label>Key : </label><input type="text" placeholder="Key" />
+                    <label>Force Key</label><input type="checkbox" />
+                    <br />
+                    <label>URL</label><input type="text" placeholder="https://www.google.com/search?q=%s" />
+                </div>
               </fieldset>
 
               <fieldset>
                 <legend>Cloud Storage</legend>
-                <i class="fa fa-cloud"></i>
-                <i class="fa fa-cloud-download"></i>
-                <i class="fa fa-camera-retro fa-5x"></i>
+                <i class="fa fa-cloud fa-5x" style="color : rgba(255,255,255,.2);"></i>
+                <i class="fa fa-cloud-download fa-5x" style="color : rgba(255,255,255,.2);"></i>
+                <i class="fa fa-hdd-o fa-5x" style="color : rgba(255,255,255,.2);"></i>
+                <i class="fa fa-archive fa-5x" style="color : rgba(255,255,255,.2);"></i>
               </fieldset>
 
               </fieldset>
