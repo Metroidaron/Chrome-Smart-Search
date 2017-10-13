@@ -180,3 +180,7 @@ input, textarea, select, option{
     color: white;
     text-align: left;
 }
+
+option{
+  color: black;
+}
