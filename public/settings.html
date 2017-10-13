@@ -60,7 +60,6 @@
                 <label for="backgroundColor">Background Color : </label><input style="min-width:75px;" name="backgroundColor" type="color" />
               </fieldset>
 
-              <fieldset>
                 <legend>Rules</legend>
                 <div>
                   This form of editing the rules has not been implimented yet, Editing these rules will not modify the functions of the web page.  One of each of these rules has been impimented to establish what fields need to utilized and as a scaffold for designing the javascript behind each item.  These rules should be added and removed dynamically.
@@ -77,6 +76,7 @@
                   </ul>
                 </div>
 
+                <fieldset>
                 <div>
                     <label>Rule Name</label><input type="text" placeholder="Standard Google Search" />
                     <label>Rule Type</label>
@@ -95,12 +95,42 @@
                         <option>In A New Tab</option>
                         <option>In A New Window</option>
                       </select>
-                    <label>Key : </label><input type="text" placeholder="Key" />
+                    <label>Key : </label><input type="text" placeholder="^[Gg]oog" />
                     <label>Force Key</label><input type="checkbox" />
                     <br />
                     <label>URL</label><input type="text" placeholder="https://www.google.com/search?q=%s" />
+                    <br />
+                    <label>Input = </label><input type="text" placeholder="." />
                 </div>
               </fieldset>
+
+              <fieldset>
+              <div>
+                  <label>Rule Name</label><input type="text" value="Fedex Tracking Number" />
+                  <label>Rule Type</label>
+                    <select>
+                      <option selected>Match</option>
+                      <option>Key</option>
+                      <option>Redirect</option>
+                      <option>GET</option>
+                      <option>POST</option>
+                      <option>Script</option>
+                    </select>
+                    <br />
+                  <label>Open Target : </label>
+                    <select>
+                      <option selected>In This Tab</option>
+                      <option>In A New Tab</option>
+                      <option>In A New Window</option>
+                    </select>
+                  <label>Key : </label><input type="text" value="^[Ff]edex" />
+                  <label>Force Key</label><input type="checkbox" checked />
+                  <br />
+                  <label>URL</label><input type="text" value="https://www.fedex.com/apps/fedextrack/?tracknumbers=%s" />
+                  <br />
+                  <label>Input = </label><input type="text" value="\d{12,14}|\d{4}.\d{4}.\d{4}" />
+              </div>
+            </fieldset>
 
               <fieldset>
                 <legend>Cloud Storage</legend>
@@ -135,11 +165,21 @@ START JSON:
     {
       "type" : "match",
       "name" : "",
+      "target" : "",
+      "key" : "",
+      "forceKey" : "",
+      "url" : "",
+      "inputFilter" : ""
 
     },
     {
-      "type" : "key",
-      "name" : "",
+      "type" : "match",
+      "name" : "Fedex Tracking Number",
+      "target" : "this tab",
+      "key" : "^[Ff]edex",
+      "forceKey" : "true",
+      "url" : "https://www.fedex.com/apps/fedextrack/?tracknumbers=%s",
+      "inputFilter" : "\d{12,14}|\d{4}.\d{4}.\d{4}"
 
     },
     {
