@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -17,202 +18,158 @@
 
     <!-- Custom styles for this application -->
     <link href="style.css" rel="stylesheet">
+
+    <!-- JSON Editor imports -->
+    <link href="jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
+    <script src="jsoneditor/dist/jsoneditor.min.js"></script>
   </head>
 
-  <body>
+  <body id="settingsBody">
 
-    <div id="settings_container" class="row container">
-        <div id="left" class="col-sm-3 rounded">
-            <h2>Personal</h2>
-            <hr />
-            <h2>Personalization</h2>
-            <hr />
-            <h2>Search Rules</h2>
-            <hr />
-            <h2>Cloud Sync</h2>
-            <hr />
-            <h2>JSON Text</h2>
-        </div>
+    <div id="settingsGridContainer">
+      <div id="settingsHeader">Settings</div>
+      <div id="sideBar">
+        <p>
+          This settings menu has you the user editing the JSON of the program directly. It is recomended that you review some resources pertaining to JSON before attempting to edit the code to the right.  It will be necissary for you to learn JSON in order for you to add custom rules to Chrome Smart Search.  You will also need to know how to write Regular Expressions (regex) because you will be entering these expressions into the json, and these expressions tell Chrome Smart Search what text patterns to search for.  Reference the Git Hub repository (LINK) for resources that will assist you with your desired tasks.
+        </p>
 
-        <div id="right" class="col-sm-8 rounded">
+        <hr />
 
-            <div id="instructions">
-              Information in this form will be updated as you change the values, no save button is needed.  In order to backup or import your settings, please use the "JSON Text" Button to the left, you may update this text and select "Save" to edit your changes as well.
-            </div>
+        <p>
+          Reference the rule type below to determine what you would like to create.  Most rules are likely to be Matches or Redirects; if your new, it is highly recomended that you work with these first.
+        </p>
 
-            <br />
+          Rule Types:
+            <ul>
+              <li>Match</li>
+              <li>Redirect</li>
+              <li>Get</li>
+              <li>Post</li>
+              <li>Script</li>
+            </ul>
 
-            <form class="row container">
-              <fieldset>
-                <legend>User Information</legend>
-                <label for="fname">First Name : </label><input name="fname" type="text" placeholder="John" />
-                <label for="lname">Last Name : </label><input name="lname" type="text" placeholder="Snow" />
-                <br />
-                <label>Email : </label><input type="email" placeholder="John.Snow@example.com" />
-                <br/>
-                <label for="zip">Zip Code : </label><input name="zip" type="text" placeholder="12345" />
+        <hr />
 
-              </fieldset>
+        <h1>Match</h1>
+        <p>
+          Match rules are used when you want to accept a format of data (Such as a fedex tracking number) and realize what that number represents, and perform an action based on that input.  If we input a fedex tracking number, we want to open the fedex tracking website and pass that tracking number forward.  We can use a "Key" to force this rule to trigger, but a key is not required.
+        </p>
 
-              <fieldset>
-                <legend>User Interface Personalization</legend>
-                <label for="fontColor">Text Color : </label><input style="min-width:75px;" name="fontColor" type="color" />
-                <label for="backgroundColor">Background Color : </label><input style="min-width:75px;" name="backgroundColor" type="color" />
-              </fieldset>
+          <ul>
+            <li><h3>Name</h3></li>
+            <ul>
+              <li>The name of the rule, this has no restrictions, choose something short and descriptive</li>
+            </ul>
 
-                <legend>Rules</legend>
-                <div>
-                  This form of editing the rules has not been implimented yet, Editing these rules will not modify the functions of the web page.  One of each of these rules has been impimented to establish what fields need to utilized and as a scaffold for designing the javascript behind each item.  These rules should be added and removed dynamically.
-                </div>
+            <li><h3>Target</h3></li>
+            This determines where the recognized command will open, will default to thisTab
+            <ul>
+              <li>thisTab</li>
+              <li>newTab</li>
+              <li>newWindow</li>
+            </ul>
 
-                <div id="ruleDescriptions">
-                  <ul>
-                    <li>Match :  Matches user input to a rule, defined by a Regular Expression.  User can opt to use a 'Key' to force recognition of this rule, otherwise this rule will follow standard recognition rules.</li>
-                    <li>Redirect : Redirects the user to the given url, much like a book mark.  This rule is not meant to pass any data to the target website.</li>
-                    <li>GET : allows the user to pass a selection of values to the target website (all values predetermined except what the user types to triger this rule, if the user would like to pass multiple values the user needs to utilize the 'Script' rule)</li>
-                    <li>POST : Same as the GET Rule, but using POST Values.  (More Technical and requires a stronger understanding of the target website)</li>
-                    <li>Script : Allows a user to write a custom script to execute when this rule is triggered</li>
-                    <li></li>
-                  </ul>
-                </div>
+            <li><h3>Key</h3></li>
+            <ul>
+              <li>[regex field] Enter a regular expression that if matched, will trigger this rule to run. These typically should come at the beginning of of your input, such as "fedex 1234-1234-1234" with "fedex" being the key.</li>
+              <li>Example: ^[Ff]edex</li>
+            </ul>
 
-                <fieldset>
-                <div>
-                    <label>Rule Name</label><input type="text" placeholder="Standard Google Search" />
-                    <label>Rule Type</label>
-                      <select>
-                        <option selected>Match</option>
-                        <option>Key</option>
-                        <option>Redirect</option>
-                        <option>GET</option>
-                        <option>POST</option>
-                        <option>Script</option>
-                      </select>
-                      <br />
-                    <label>Open Target : </label>
-                      <select>
-                        <option>In This Tab</option>
-                        <option>In A New Tab</option>
-                        <option>In A New Window</option>
-                      </select>
-                    <label>Key : </label><input type="text" placeholder="^[Gg]oog" />
-                    <label>Force Key</label><input type="checkbox" />
-                    <br />
-                    <label>URL</label><input type="text" placeholder="https://www.google.com/search?q=%s" />
-                    <br />
-                    <label>Input = </label><input type="text" placeholder="." />
-                </div>
-              </fieldset>
+            <li><h3>Force Key</h3></li>
+            Should this key always be entered for this rule to trigger? If this is enabled (set to true) then fedex tracking numbers won't register unless you type "Fedex" before the number. If this is set to False, you will be able to enter only "1234-1234-1234" and Chrome smart search will still take you to fedex's website.
+            <ul>
+              <li>True</li>
+              <li>False</li>
+            </ul>
 
-              <fieldset>
-              <div>
-                  <label>Rule Name</label><input type="text" value="Fedex Tracking Number" />
-                  <label>Rule Type</label>
-                    <select>
-                      <option selected>Match</option>
-                      <option>Key</option>
-                      <option>Redirect</option>
-                      <option>GET</option>
-                      <option>POST</option>
-                      <option>Script</option>
-                    </select>
-                    <br />
-                  <label>Open Target : </label>
-                    <select>
-                      <option selected>In This Tab</option>
-                      <option>In A New Tab</option>
-                      <option>In A New Window</option>
-                    </select>
-                  <label>Key : </label><input type="text" value="^[Ff]edex" />
-                  <label>Force Key</label><input type="checkbox" checked />
-                  <br />
-                  <label>URL</label><input type="text" value="https://www.fedex.com/apps/fedextrack/?tracknumbers=%s" />
-                  <br />
-                  <label>Input = </label><input type="text" value="\d{12,14}|\d{4}.\d{4}.\d{4}" />
-              </div>
-            </fieldset>
+            <li><h3>URL</h3></li>
+            The URL that we want to merge our data with.  This will pull our input and place it here in this url.  We cannot "Clean" input, so the formatting must be correct when typed into Chrome Smart Search.
+            <ul>
+              <li>Example: https://www.fedex.com/apps/fedextrack/?tracknumbers=%s</li>
+              <li>NOTE: %s is where our data will be dumped into the URL.</li>
+            </ul>
 
-              <fieldset>
-                <legend>Cloud Storage</legend>
-                <i class="fa fa-cloud fa-5x" style="color : rgba(255,255,255,.2);"></i>
-                <i class="fa fa-cloud-download fa-5x" style="color : rgba(255,255,255,.2);"></i>
-                <i class="fa fa-hdd-o fa-5x" style="color : rgba(255,255,255,.2);"></i>
-                <i class="fa fa-archive fa-5x" style="color : rgba(255,255,255,.2);"></i>
-              </fieldset>
+            <li><h3>Input Filter</h3></li>
+            [Regex field] Regex value used to parse users input.  Must be double character escaped to avoid breaking JSON.
+            <ul>
+              <li>Example: \\d{12,14}|\\d{4}.\\d{4}.\\d{4}</li>
+            </ul>
+          </ul>
 
-              </fieldset>
-                <legend>JSON Text Output (Do Not Modify unless your know what you are doing.)</legend>
-                <textarea cols="100%" rows="100%">
-SAMPLE DATA HERE
-This text is meant to help map out what settings need to be represented.
-When loading this settings page, this text area should be hidden and require the user to click a button or perform a verification task to prevent un-intended editing.
-
-START JSON:
-
-{
-  "userSettings" : {
-    "firstName" : "John",
-    "lastName" : "Snow",
-    "email" : "testing@Testing.com",
-    "zip" : 12345
-  },
-  "userInterfacePersonalization" : {
-    "hideJSON" : 0,
-    "theme" : "Dark",
-    "wallpaperTint" : "0"
-  }
-  "rules" : [
-    {
-      "type" : "match",
-      "name" : "",
-      "target" : "",
-      "key" : "",
-      "forceKey" : "",
-      "url" : "",
-      "inputFilter" : ""
-
-    },
-    {
-      "type" : "match",
-      "name" : "Fedex Tracking Number",
-      "target" : "this tab",
-      "key" : "^[Ff]edex",
-      "forceKey" : "true",
-      "url" : "https://www.fedex.com/apps/fedextrack/?tracknumbers=%s",
-      "inputFilter" : "\d{12,14}|\d{4}.\d{4}.\d{4}"
-
-    },
-    {
-      "type" : "redirect",
-      "name" : "",
-
-    },
-    {
-      "type" : "GET",
-      "name" : "",
-
-    },
-    {
-      "type" : "POST",
-      "name" : "",
-
-    },
-    {
-      "type" : "Script",
-      "name" : "",
-
-    }
-  ]
-
-
-}
-
-                </textarea>
-              </fieldset>
-
-            </form>
-        </div>
+      </div>
+      <div id="jsoneditor"></div>
     </div>
 
+
+    <script>
+    // set json
+    var json = {
+      "userSettings" : {
+        "firstName" : "John",
+        "lastName" : "Snow",
+        "email" : "testing@Testing.com",
+        "zip" : 12345
+      },
+      "userInterfacePersonalization" : {
+        "hideJSON" : 0,
+        "theme" : "Dark",
+        "wallpaperTint" : "0"
+      },
+      "rules" : [
+        {
+          "type" : "match",
+          "name" : "",
+          "target" : "",
+          "key" : "",
+          "forceKey" : "",
+          "url" : "",
+          "inputFilter" : ""
+
+        },
+        {
+          "type" : "match",
+          "name" : "Fedex Tracking Number",
+          "target" : "this tab",
+          "key" : "^[Ff]edex",
+          "forceKey" : "true",
+          "url" : "https://www.fedex.com/apps/fedextrack/?tracknumbers=%s",
+          "inputFilter" : "\\d{12,14}|\\d{4}.\\d{4}.\\d{4}"
+
+        },
+        {
+          "type" : "redirect",
+          "name" : ""
+        },
+        {
+          "type" : "GET",
+          "name" : ""
+        },
+        {
+          "type" : "POST",
+          "name" : ""
+        },
+        {
+          "type" : "Script",
+          "name" : ""
+        }
+      ]
+    };
+    </script>
+
+    <script>
+      var container = document.getElementById('jsoneditor');
+      var options = {
+        mode: 'tree',
+        modes: ['code', 'form', 'text', 'tree', 'view'], // allowed modes
+        onError: function (err) {
+          alert(err.toString());
+        },
+        onModeChange: function (newMode, oldMode) {
+          console.log('Mode switched from', oldMode, 'to', newMode);
+        }
+      };
+      var editor = new JSONEditor(container, options, json);
+      editor.expandAll()
+    </script>
   </body>
 </html>
