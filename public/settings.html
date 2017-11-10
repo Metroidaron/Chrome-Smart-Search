@@ -129,7 +129,7 @@
         {
           "type" : "match",
           "name" : "Fedex Tracking Number",
-          "target" : "this tab",
+          "target" : "thisTab",
           "key" : "^[Ff]edex",
           "forceKey" : "true",
           "url" : "https://www.fedex.com/apps/fedextrack/?tracknumbers=%s",
@@ -138,15 +138,72 @@
         },
         {
           "type" : "redirect",
-          "name" : ""
+          "name" : "",
+          "target" : "",
+          "url" : "",
+          "inputFilter" : ""
+        },
+        {
+          "type" : "redirect",
+          "name" : "Facebook Homepage",
+          "target" : "thisTab",
+          "url" : "https://www.facebook.com",
+          "inputFilter" : "^[Ff][Bb]"
         },
         {
           "type" : "GET",
-          "name" : ""
+          "name" : "",
+          "target" : "",
+          "key" : "",
+          "forceKey" : "",
+          "url" : "",
+          "inputFilter" : [
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "type" : "GET",
+          "name" : "Sample Website Login and Query",
+          "example" : "Sample johnSnow1234 packLeader2017 'stark family tree'",
+          "target" : "thisTab",
+          "key" : "^[Ss]ample",
+          "forceKey" : "true",
+          "url" : "http://www.MyWebsite.com/?username=%s{un}&passwordKey=%s{pw}&query=%s{query}",
+          "inputFilter" : [
+            "un",
+            "pw",
+            "query"
+          ]
         },
         {
           "type" : "POST",
-          "name" : ""
+          "name" : "",
+          "example" : "",
+          "target" : "",
+          "key" : "",
+          "forceKey" : "",
+          "url" : "",
+          "inputFilter" : [
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "type" : "POST",
+          "name" : "Sample Website Login and Query",
+          "example" : "KingsLanding Dtargaryen MotherOfDragons 'targaryen family tree'",
+          "target" : "thisTab",
+          "key" : "^[Kk]ings[Ll]anding",
+          "forceKey" : "false",
+          "url" : "http://www.KingsLandingSearch.com/?username=%s{un}&passwordKey=%s{pw}&query=%s{query}",
+          "inputFilter" : [
+            "un",
+            "pw",
+            "query"
+          ]
         },
         {
           "type" : "Script",
