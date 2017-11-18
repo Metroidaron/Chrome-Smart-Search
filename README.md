@@ -4,7 +4,7 @@
 
 Chrome Smart Search is meant to introduce logic into the Google Chrome Omni Bar and allow for easy customization and an enhanced searching experience tailored specifically for the user.
 
-### How to download/use
+### How to download/use (OutDated and needs update)
 
 Required Programs
 - Git (If your looking to clone this repository, you may also download a copy using the download button in the top right)
@@ -23,10 +23,10 @@ Steps
 
 ---
 
-### Production Goals/Desired feature list
+### Production Goals/Desired feature list (OutDated and needs update)
 
 >>>
-##### Front End
+##### Front End  
 - Base Web UI that displays when a search from the Omni bar is entered.  This webpage should be slightly customizable (As in Color/background image) while the search is performed and display information as the search is initiated.
 - Settings page where the user can access settings that will affect their search settings, but modifying these settings will have no effect on other users of the tool.  
 - Server side settings where default values can be modified by any user OR by admin.  These default settings will be established by directly modifying a file or files in the source code.  
