@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -12,21 +13,220 @@
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Font Awesome Core CSS -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
     <!-- Custom styles for this application -->
     <link href="style.css" rel="stylesheet">
+
+    <!-- JSON Editor imports -->
+    <link href="jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
+    <script src="jsoneditor/dist/jsoneditor.min.js"></script>
   </head>
 
-  <body>
+  <body id="settingsBody">
 
-    <div id="settings_container" class="row container">
-        <div class="col-sm-3 rounded">
-            The two Col
-        </div>
+    <div id="settingsGridContainer">
+      <div id="settingsHeader">Settings</div>
+      <div id="sideBar">
+        <p>
+          This settings menu has you the user editing the JSON of the program directly. It is recomended that you review some resources pertaining to JSON before attempting to edit the code to the right.  It will be necissary for you to learn JSON in order for you to add custom rules to Chrome Smart Search.  You will also need to know how to write Regular Expressions (regex) because you will be entering these expressions into the json, and these expressions tell Chrome Smart Search what text patterns to search for.  Reference the Git Hub repository (LINK) for resources that will assist you with your desired tasks.
+        </p>
 
-        <div class="col-sm-8 rounded">
-            The 10 Col
-        </div>
+        <hr />
+
+        <p>
+          Reference the rule type below to determine what you would like to create.  Most rules are likely to be Matches or Redirects; if your new, it is highly recomended that you work with these first.
+        </p>
+
+          Rule Types:
+            <ul>
+              <li>Match</li>
+              <li>Redirect</li>
+              <li>Get</li>
+              <li>Post</li>
+              <li>Script</li>
+            </ul>
+
+        <hr />
+
+        <h1>Match</h1>
+        <p>
+          Match rules are used when you want to accept a format of data (Such as a fedex tracking number) and realize what that number represents, and perform an action based on that input.  If we input a fedex tracking number, we want to open the fedex tracking website and pass that tracking number forward.  We can use a "Key" to force this rule to trigger, but a key is not required.
+        </p>
+
+          <ul>
+            <li><h3>Name</h3></li>
+            <ul>
+              <li>The name of the rule, this has no restrictions, choose something short and descriptive</li>
+            </ul>
+
+            <li><h3>Target</h3></li>
+            This determines where the recognized command will open, will default to thisTab
+            <ul>
+              <li>thisTab</li>
+              <li>newTab</li>
+              <li>newWindow</li>
+            </ul>
+
+            <li><h3>Key</h3></li>
+            <ul>
+              <li>[regex field] Enter a regular expression that if matched, will trigger this rule to run. These typically should come at the beginning of of your input, such as "fedex 1234-1234-1234" with "fedex" being the key.</li>
+              <li>Example: ^[Ff]edex</li>
+            </ul>
+
+            <li><h3>Force Key</h3></li>
+            Should this key always be entered for this rule to trigger? If this is enabled (set to true) then fedex tracking numbers won't register unless you type "Fedex" before the number. If this is set to False, you will be able to enter only "1234-1234-1234" and Chrome smart search will still take you to fedex's website.
+            <ul>
+              <li>True</li>
+              <li>False</li>
+            </ul>
+
+            <li><h3>URL</h3></li>
+            The URL that we want to merge our data with.  This will pull our input and place it here in this url.  We cannot "Clean" input, so the formatting must be correct when typed into Chrome Smart Search.
+            <ul>
+              <li>Example: https://www.fedex.com/apps/fedextrack/?tracknumbers=%s</li>
+              <li>NOTE: %s is where our data will be dumped into the URL.</li>
+            </ul>
+
+            <li><h3>Input Filter</h3></li>
+            [Regex field] Regex value used to parse users input.  Must be double character escaped to avoid breaking JSON.
+            <ul>
+              <li>Example: \\d{12,14}|\\d{4}.\\d{4}.\\d{4}</li>
+            </ul>
+          </ul>
+
+      </div>
+      <div id="jsoneditor"></div>
     </div>
 
+
+    <script>
+    // set json
+    var json = {
+      "userSettings" : {
+        "firstName" : "John",
+        "lastName" : "Snow",
+        "email" : "testing@Testing.com",
+        "zip" : 12345
+      },
+      "userInterfacePersonalization" : {
+        "hideJSON" : 0,
+        "theme" : "Dark",
+        "wallpaperTint" : "0"
+      },
+      "rules" : [
+        {
+          "type" : "match",
+          "name" : "",
+          "target" : "",
+          "key" : "",
+          "forceKey" : "",
+          "url" : "",
+          "inputFilter" : ""
+
+        },
+        {
+          "type" : "match",
+          "name" : "Fedex Tracking Number",
+          "target" : "thisTab",
+          "key" : "^[Ff]edex",
+          "forceKey" : "true",
+          "url" : "https://www.fedex.com/apps/fedextrack/?tracknumbers=%s",
+          "inputFilter" : "\\d{12,14}|\\d{4}.\\d{4}.\\d{4}"
+
+        },
+        {
+          "type" : "redirect",
+          "name" : "",
+          "target" : "",
+          "url" : "",
+          "inputFilter" : ""
+        },
+        {
+          "type" : "redirect",
+          "name" : "Facebook Homepage",
+          "target" : "thisTab",
+          "url" : "https://www.facebook.com",
+          "inputFilter" : "^[Ff][Bb]"
+        },
+        {
+          "type" : "GET",
+          "name" : "",
+          "target" : "",
+          "key" : "",
+          "forceKey" : "",
+          "url" : "",
+          "inputFilter" : [
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "type" : "GET",
+          "name" : "Sample Website Login and Query",
+          "example" : "Sample johnSnow1234 packLeader2017 'stark family tree'",
+          "target" : "thisTab",
+          "key" : "^[Ss]ample",
+          "forceKey" : "true",
+          "url" : "http://www.MyWebsite.com/?username=%s{un}&passwordKey=%s{pw}&query=%s{query}",
+          "inputFilter" : [
+            "un",
+            "pw",
+            "query"
+          ]
+        },
+        {
+          "type" : "POST",
+          "name" : "",
+          "example" : "",
+          "target" : "",
+          "key" : "",
+          "forceKey" : "",
+          "url" : "",
+          "inputFilter" : [
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "type" : "POST",
+          "name" : "Sample Website Login and Query",
+          "example" : "KingsLanding Dtargaryen MotherOfDragons 'targaryen family tree'",
+          "target" : "thisTab",
+          "key" : "^[Kk]ings[Ll]anding",
+          "forceKey" : "false",
+          "url" : "http://www.KingsLandingSearch.com/?username=%s{un}&passwordKey=%s{pw}&query=%s{query}",
+          "inputFilter" : [
+            "un",
+            "pw",
+            "query"
+          ]
+        },
+        {
+          "type" : "Script",
+          "name" : ""
+        }
+      ]
+    };
+    </script>
+
+    <script>
+      var container = document.getElementById('jsoneditor');
+      var options = {
+        mode: 'tree',
+        modes: ['code', 'form', 'text', 'tree', 'view'], // allowed modes
+        onError: function (err) {
+          alert(err.toString());
+        },
+        onModeChange: function (newMode, oldMode) {
+          console.log('Mode switched from', oldMode, 'to', newMode);
+        }
+      };
+      var editor = new JSONEditor(container, options, json);
+      editor.expandAll()
+    </script>
   </body>
 </html>

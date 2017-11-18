@@ -6,5 +6,7 @@ app.use('/', express.static(__dirname + '/public')); //Redirect Root folder
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 app.use('/fonts', express.static(__dirname + '/node_modules/bootstrap/dist/fonts')); // redirect CSS bootstrap
+app.use('/font-awesome', express.static(__dirname + '/node_modules/font-awesome')) // Redirects to Font-Awesome
+app.use('/jsoneditor', express.static(__dirname + '/node_modules/jsoneditor')) //Redirects to JSONEditor
 
 app.listen(8080);
