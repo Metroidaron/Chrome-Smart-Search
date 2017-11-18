@@ -1,0 +1,21 @@
+{
+  "name": "chrome_smart_search",
+  "version": "0.0.1",
+  "description": "Chrome Smart Search is meant to introduce logic into the Google Chrome Omni Bar and allow for easy customization and an enhanced searching experience tailored specifically for the user.",
+  "main": "start.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Metroidaron/Chrome-Smart-Search.git"
+  },
+  "author": "Carver, Joshua",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Metroidaron/Chrome-Smart-Search/issues"
+  },
+  "homepage": "https://github.com/Metroidaron/Chrome-Smart-Search#readme"
+}
