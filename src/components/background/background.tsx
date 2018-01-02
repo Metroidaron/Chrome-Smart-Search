@@ -27,11 +27,11 @@ export default class Background extends React.Component<iProps, iState>{
     }
 
     extractImage(){
-        
+
     }
 
     render(){
-        return(<div>Background</div>)
+        return(<div id="backgroundLayer"><img src="https://images5.alphacoders.com/386/386084.jpg" /></div>)
     }
 
 }
