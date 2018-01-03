@@ -28,11 +28,20 @@ export default class ChromeSmartSearch extends React.Component<iProps, iState>{
         }
     }
 
+    componentDidMount(){
+        this.setDimensions();
+    }
+
     private theStack(): Array<JSX.Element>{
         let buffer = [];
-        buffer.push(<div>test</div>);
         (this.state.showBackroundLayer) ? buffer.push(<Background />) : null;
         return buffer;
+    }
+
+    private setDimensions(){
+        let root = document.getElementById("root");
+        (root != null) ? root.style.width = window.innerWidth + "px" : null;
+        (root != null) ? root.style.height = window.innerHeight + "px" : null;
     }
 
     render(){
