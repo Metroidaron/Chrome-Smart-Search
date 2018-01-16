@@ -1,0 +1,35 @@
+#infoLayer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "one two"
+    "three four";
+}
+
+#quadOne{
+    grid-area: "one";
+    background-color: lightgrey;
+}
+
+#quadTwo{
+    grid-area: "two";
+    background-color: lightgrey;
+
+    text-align: right;
+}
+
+#quadThree{
+    grid-area: "three";
+    background-color: lightgrey;
+}
+
+#quadFour{
+    grid-area: "four";
+    background-color: lightgrey;
+    
+    text-align: right;
+}

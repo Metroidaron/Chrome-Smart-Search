@@ -2,6 +2,7 @@ import * as React from 'react';
 import './ChromeSmartSearch.css';
 
 import Background from './components/background/background';
+import Info from './components/info/info';
 
 export interface iProps{
 
@@ -35,6 +36,7 @@ export default class ChromeSmartSearch extends React.Component<iProps, iState>{
     private theStack(): Array<JSX.Element>{
         let buffer = [];
         (this.state.showBackroundLayer) ? buffer.push(<Background />) : null;
+        (this.state.showInfoLayer) ? buffer.push(<Info />) : null;
         return buffer;
     }
 
