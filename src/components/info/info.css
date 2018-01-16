@@ -12,24 +12,24 @@
 
 #quadOne{
     grid-area: "one";
-    background-color: lightgrey;
+    background-color: transparent;
 }
 
 #quadTwo{
     grid-area: "two";
-    background-color: lightgrey;
+    background-color: transparent;
 
     text-align: right;
 }
 
 #quadThree{
     grid-area: "three";
-    background-color: lightgrey;
+    background-color: transparent;
 }
 
 #quadFour{
     grid-area: "four";
-    background-color: lightgrey;
+    background-color: transparent;
     
     text-align: right;
 }
