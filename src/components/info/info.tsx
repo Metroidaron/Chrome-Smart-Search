@@ -54,7 +54,7 @@ export default class Info extends React.Component<iProps, iState>{
     }
     
     weather(){
-        fetch("http://api.openweathermap.org/data/2.5/weather?q=32714&APPID=9c31c121d1c2294620017c6f60dd7874").then(r => r.text()).then(data => this.setState({weather: data}));
+        fetch("https://api.openweathermap.org/data/2.5/weather?q=32714&APPID=9c31c121d1c2294620017c6f60dd7874").then(r => r.text()).then(data => this.setState({weather: data}));
     }
 
     render(){
