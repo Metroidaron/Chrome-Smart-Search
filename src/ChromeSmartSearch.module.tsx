@@ -4,6 +4,7 @@ import './ChromeSmartSearch.css';
 import Background from './components/background/background';
 import Info from './components/info/info';
 import Search from './components/search/search';
+import Settings from './components/settings/settings';
 
 export interface iProps{
 
@@ -39,6 +40,7 @@ export default class ChromeSmartSearch extends React.Component<iProps, iState>{
         (this.state.showBackroundLayer) ? buffer.push(<Background />) : null;
         (this.state.showInfoLayer) ? buffer.push(<Info />) : null;
         (this.state.showSearchLayer) ? buffer.push(<Search />) : null;
+        (this.state.showSettingsLayer) ? buffer.push(<Settings />) : null;
         return buffer;
     }
 
