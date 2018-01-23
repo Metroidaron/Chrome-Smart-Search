@@ -24,11 +24,20 @@ class settingsStorage{
         return this.settings;
     }
 
-    initSettings(){
-        this.settings.firstName = "Jane";
-        this.settings.lastName = "Doe";
-        this.settings.theme = "light";
-        this.settings.wallpaperTint = 0;
+    initSettings(){ //Set default values for all settings, if Value is not present, setting does not display.
+        let s = this.settings;
+
+        //Personal Info
+        s.firstName = "Thor";
+        s.lastName = "Odinson";
+        s.email = "mjolnir@asgard.gov";
+        s.zip = 123456;
+
+        //Application Settings
+        s.theme = "light";
+        s.wallpaperTint = 50;
+
+        //Save
         this.saveSettingsToStorage();
     }
 }

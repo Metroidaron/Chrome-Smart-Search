@@ -30,20 +30,29 @@ export default class Settings extends React.Component<iProps, iState>{
         this.setState({settings : this.sS.getSettingsObject()})
     }
 
-    handleChange(e: Event){
-        
+    handleChange(event: any){
+        let element: any = event.target.value;
+        console.log(event.target.name + ": " + element);
+        this.state.settings[event.target.name] = element;
         this.sS.saveSettingsToStorage(this.state.settings);
+    }
+
+    showSettingsForm(): JSX.Element{
+        let results : JSX.Element[] = [];
+        let settings = this.state.settings;
+
+        for(let data in settings){
+            console.log("Data Key: " + data + " Data Key Value: " + settings[data]);
+            results.push(<input onChange={this.handleChange} key={data} defaultValue={settings[data]} name={data} />)
+        }
+
+        return <div>{results}</div>;
     }
 
     render(){
         return(
         <div id="settingsLayer">
-            <input value={this.state.settings.firstName} onChange={(e) => this.handleChange} type="text" />
-            <input value={this.state.settings.lastName} onChange={(e) => this.handleChange} type="text" />
-            <input value={this.state.settings.email} onChange={(e) => this.handleChange} type="text" />
-            <input value={this.state.settings.zip} onChange={(e) => this.handleChange} type="number" />
-            <input value={this.state.settings.theme} onChange={(e) => this.handleChange} type="text" />
-            <input value={this.state.settings.wallpaperTint} onChange={(e) => this.handleChange} type="text" />
+            {this.showSettingsForm()}
         </div>);
     }
 
