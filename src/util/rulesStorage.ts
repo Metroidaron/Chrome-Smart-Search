@@ -9,7 +9,7 @@ class rulesStorage {
 
     fetchRules() {
         let storageGlimpse = localStorage.getItem("rules");
-        this.liveRuleSet = JSON.parse((storageGlimpse != null) ? storageGlimpse : "");
+        this.liveRuleSet = JSON.parse((storageGlimpse != null) ? storageGlimpse : "{}");
         
     }
 

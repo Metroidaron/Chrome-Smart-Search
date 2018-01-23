@@ -1,26 +1,36 @@
+import iSettings from './iSettings';
+
 class settingsStorage{
+
+    settings : iSettings = <iSettings>{};
 
     constructor(){
         (typeof(Storage) !== "undefined") ? null : alert("Error, You must use a newer browser; web storage not supported");
+        (localStorage.getItem('settings') == null || localStorage.getItem('settings') == "{}") ? this.initSettings() : null; 
+        this.fetchSettingsFromStorage();
     }
 
-    fetchSettings(){
-
+    fetchSettingsFromStorage(){
+        let storageGlimpse = localStorage.getItem("settings");
+        this.settings = JSON.parse((storageGlimpse != null) ? storageGlimpse : "{}");
     }
 
-    saveSettings(){
-
+    saveSettingsToStorage(settingsToSave ?: iSettings){
+        (settingsToSave != null) ? this.settings = settingsToSave : null;
+        localStorage.setItem("settings", JSON.stringify(this.settings));
     }
 
-    firstName : string;
-    lastName : string;
-    email : string; 
-    zip : number; // for Weather
+    getSettingsObject(){
+        return this.settings;
+    }
 
-    theme : string; // Dark, Light
-    wallpaperTint : number; // 0 to 1
-
-
+    initSettings(){
+        this.settings.firstName = "Jane";
+        this.settings.lastName = "Doe";
+        this.settings.theme = "light";
+        this.settings.wallpaperTint = 0;
+        this.saveSettingsToStorage();
+    }
 }
 
 export default settingsStorage;

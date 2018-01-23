@@ -27,7 +27,7 @@ export default class ChromeSmartSearch extends React.Component<iProps, iState>{
             showBackroundLayer: true,
             showInfoLayer: true,
             showSearchLayer: true,
-            showSettingsLayer: false,
+            showSettingsLayer: true,
         }
     }
 
