@@ -35,7 +35,7 @@ class settingsStorage{
 
         //Application Settings
         s.theme = "light";
-        s.wallpaperTint = 50;
+        s.wallpaperTint = .5;
 
         //Save
         this.saveSettingsToStorage();

@@ -22,6 +22,7 @@ export default class Settings extends React.Component<iProps, iState>{
     }
 
     componentDidMount(){
+        this.setBackground();
     }
 
     handleChange(event: any){
@@ -30,6 +31,13 @@ export default class Settings extends React.Component<iProps, iState>{
         this.props.settings.getSettingsObject()[event.target.name] = element;
         this.props.settings.saveSettingsToStorage(this.props.settings.getSettingsObject());
         this.props.updateCallback();
+    }
+
+    setBackground(){
+        let elem = document.getElementById('settingsLayer');
+        let number = this.props.settings.getSettingsObject().wallpaperTint;
+        console.log("Setting color to: " + number);
+        (elem != null || elem != undefined) ? elem.style.backgroundColor = 'rgba(0,0,0,' + number + ')' : null;
     }
 
     showSettingsForm(): JSX.Element{
