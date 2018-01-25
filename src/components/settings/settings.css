@@ -1,8 +1,25 @@
 #settingsLayer{
     position: absolute;
-    width: 100%;
+    width: 500px;
     height: 100%;
     display: grid;
-    align-content: flex-end;
+    align-content: flex-start;
     color: white;
+    background-color:rgba(0,0,0,.5);
+}
+
+#settingsLayer .setting{
+    width: 500px;
+    padding: 5px;
+}
+
+#settingsLayer .setting label{
+    display: inline-block;
+    min-width: 200px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+#settingsLayer .setting input{
+    width: 200px;
 }

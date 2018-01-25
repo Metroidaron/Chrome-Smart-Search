@@ -6,17 +6,21 @@ import Info from './components/info/info';
 import Search from './components/search/search';
 import Settings from './components/settings/settings';
 
+import settingsStorage from './util/settingsStorage';
+// import iSettings from './util/iSettings';
+
 export interface iProps{
 
 }
 
 export interface iState{
+    theStackObject?: JSX.Element[];
     showBackroundLayer: boolean;
     showInfoLayer: boolean;
     showSearchLayer: boolean;
     showSettingsLayer: boolean;
 
-    theStackObject?: JSX.Element[];
+    settings : settingsStorage;
 }
 
 export default class ChromeSmartSearch extends React.Component<iProps, iState>{
@@ -28,19 +32,27 @@ export default class ChromeSmartSearch extends React.Component<iProps, iState>{
             showInfoLayer: true,
             showSearchLayer: true,
             showSettingsLayer: true,
+            settings : new settingsStorage()
         }
+        this.update = this.update.bind(this);
     }
 
     componentDidMount(){
         this.setDimensions();
+        window.setInterval(()=>{this.render()}, 1000);
+    }
+
+    update(): void{
+        this.forceUpdate();
+        // this.setState(this.state);
     }
 
     private theStack(): Array<JSX.Element>{
         let buffer = [];
         (this.state.showBackroundLayer) ? buffer.push(<Background />) : null;
         (this.state.showInfoLayer) ? buffer.push(<Info />) : null;
-        (this.state.showSearchLayer) ? buffer.push(<Search />) : null;
-        (this.state.showSettingsLayer) ? buffer.push(<Settings />) : null;
+        (this.state.showSearchLayer) ? buffer.push(<Search settings={this.state.settings} updateCallback={this.update} />) : null;
+        (this.state.showSettingsLayer) ? buffer.push(<Settings settings={this.state.settings} updateCallback={this.update} />) : null;
         return buffer;
     }
 
