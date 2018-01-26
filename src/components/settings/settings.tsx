@@ -7,6 +7,7 @@ import settingsStorage from './../../util/settingsStorage';
 export interface iProps{
     settings : settingsStorage;
     updateCallback : Function;
+    settingsToggle : Function;
 }
 
 export interface iState{
@@ -27,7 +28,7 @@ export default class Settings extends React.Component<iProps, iState>{
 
     handleChange(event: any){
         let element: any = event.target.value;
-        // console.log(event.target.name + ": " + element);
+        // console.log("Saving Modification: " + event.target.name + ": " + element);
         this.props.settings.getSettingsObject()[event.target.name] = element;
         this.props.settings.saveSettingsToStorage(this.props.settings.getSettingsObject());
         this.props.updateCallback();
@@ -36,7 +37,7 @@ export default class Settings extends React.Component<iProps, iState>{
     setBackground(){
         let elem = document.getElementById('settingsLayer');
         let number = this.props.settings.getSettingsObject().wallpaperTint;
-        console.log("Setting color to: " + number);
+        // console.log("Setting color to: " + number);
         (elem != null || elem != undefined) ? elem.style.backgroundColor = 'rgba(0,0,0,' + number + ')' : null;
     }
 
@@ -55,7 +56,11 @@ export default class Settings extends React.Component<iProps, iState>{
     render(){
         return(
         <div id="settingsLayer">
+            <div id="closeButton" onClick={() => this.props.settingsToggle(0)}><i className="fa fa-times" aria-hidden="true"></i></div>
+            <h1>{this.props.settings.getSettingsObject().firstName}'s Settings</h1>
+            <hr />
             {this.showSettingsForm()}
+            {this.setBackground()}
         </div>);
     }
 

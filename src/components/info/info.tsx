@@ -2,7 +2,7 @@ import * as React from 'react';
 import './info.css'; /* CSS File */
 
 export interface iProps{
-
+    settingsToggle : Function;
 }
 
 export interface iState{
@@ -13,6 +13,7 @@ export interface iState{
 
     weather : string;
 
+    settingsHover: boolean;
 
 }
 
@@ -25,7 +26,8 @@ export default class Info extends React.Component<iProps, iState>{
             quadrantTwo : <div></div>,
             quadrantThree : <div></div>,
             quadrantFour : <div></div>,
-            weather : "Fetching Weather"
+            weather : "Fetching Weather",
+            settingsHover: false
         }
     }
     
@@ -44,7 +46,7 @@ export default class Info extends React.Component<iProps, iState>{
     }
 
     quadrantThree(): JSX.Element{
-        let results = <div id="quadThree"></div>;
+        let results = <div id="quadThree"><button onClick={()=>this.props.settingsToggle(true)} onMouseOver={()=>this.setState({settingsHover: true})} onMouseOut={()=>this.setState({settingsHover: false})} ><i className={(this.state.settingsHover) ? "fa fa-cog fa-spin" : "fa fa-cog "} aria-hidden="true"></i></button></div>;
         return results;
     }
 

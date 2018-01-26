@@ -27,6 +27,18 @@
     background-color: transparent;
 }
 
+#quadThree button{
+    font-size:2em;
+    position: absolute;
+    bottom:0px;
+    color: grey;
+    background: transparent;
+    border:none;
+}
+#quadThree button:focus{
+    outline:none;
+}
+
 #quadFour{
     grid-area: "four";
     background-color: transparent;

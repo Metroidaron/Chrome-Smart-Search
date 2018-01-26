@@ -31,10 +31,12 @@ export default class ChromeSmartSearch extends React.Component<iProps, iState>{
             showBackroundLayer: true,
             showInfoLayer: true,
             showSearchLayer: true,
-            showSettingsLayer: true,
+            showSettingsLayer: false,
             settings : new settingsStorage()
         }
+
         this.update = this.update.bind(this);
+        this.settingsToggle = this.settingsToggle.bind(this);
     }
 
     componentDidMount(){
@@ -47,12 +49,16 @@ export default class ChromeSmartSearch extends React.Component<iProps, iState>{
         // this.setState(this.state);
     }
 
+    settingsToggle(toggle: boolean){
+        this.setState({showSettingsLayer: toggle});
+    }
+
     private theStack(): Array<JSX.Element>{
         let buffer = [];
         (this.state.showBackroundLayer) ? buffer.push(<Background />) : null;
-        (this.state.showInfoLayer) ? buffer.push(<Info />) : null;
+        (this.state.showInfoLayer) ? buffer.push(<Info settingsToggle={this.settingsToggle} />) : null;
         (this.state.showSearchLayer) ? buffer.push(<Search settings={this.state.settings} updateCallback={this.update} />) : null;
-        (this.state.showSettingsLayer) ? buffer.push(<Settings settings={this.state.settings} updateCallback={this.update} />) : null;
+        (this.state.showSettingsLayer) ? buffer.push(<Settings settings={this.state.settings} settingsToggle={this.settingsToggle} updateCallback={this.update} />) : null;
         return buffer;
     }
 
