@@ -15,9 +15,29 @@
 #five{
     justify-self: center;
     align-self: center;
+    text-align: center;
     grid-row-start: 2;
     grid-column-start: 2;
     pointer-events: all;
+    font-size: 1.5em;
+    color:white;
+    font-family: cursive;
 
-    background-color: rgba(255,255,255,.4);
+    padding: 50px;
+    background-color: rgba(0,05,0,.4);
+    border-radius: 15%;
+}
+
+#searchLayer #five #query input{
+    font-size: 3em;
+    font-family: cursive, monospace, courier;
+    width: 90%;
+    background-color: rgba(0,0,0,0);
+    border-top : none;
+    border-right : none;
+    border-left : none;
+    outline: none;
+    margin: 0px 0px 20px 0px;
+    color: white;
+    text-align: center;
 }
